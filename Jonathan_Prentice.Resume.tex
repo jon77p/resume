@@ -1,4 +1,4 @@
-\documentclass[10.5pt]{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[margin=0.5in,headsep=0.2in]{geometry}
 \usepackage{multicol}
@@ -17,18 +17,26 @@
 
 \setlength{\columnsep}{10pt}
 
+\usepackage{anyfontsize}
+
+\makeatletter
+\renewcommand\large{\fontsize{13.5}{18}}
+\renewcommand\Large{\fontsize{15.5}{18}}
+\renewcommand\huge{\fontsize{20}{18}}
+\makeatother
+
 \fancypagestyle{resumeheader}{%
   \fancyhf{}%
   \fancyhead[EOL]{%
     {\color{cpgreen}
-    \begin{minipage}[c][40pt][c]{0.44\textwidth}
+    \begin{minipage}[c][35pt][c]{0.44\textwidth}
       \huge\textbf{Jonathan Prentice}
     \end{minipage}
     }
   }
   \fancyhead[EOR]{%
     {%
-    \begin{minipage}[r][40pt][c]{0.41\textwidth}
+    \begin{minipage}[r][40pt][c]{0.475\textwidth}
       \begin{tabular}{l ? l}
         \color{cpgreen}{\raisebox{-0.1em}{\faPhone}} (949) 438~\textemdash~8855 & \color{cpgreen}{\faEnvelope} japrenti@calpoly.edu \\
         \color{cpgreen}{\raisebox{-0.1em}{\faGithub}} github.com/jon77p & \color{cpgreen}{\faLinkedinSquare} linkedin.com/in/jon77p \\
@@ -38,7 +46,7 @@
   }
   \fancyfoot[EO]{\vspace{45pt}}
   \renewcommand{\headrulewidth}{2pt}
-  \setlength{\headheight}{0.7in}
+  \setlength{\headheight}{0.5in}
   \setlength{\footskip}{55pt}
   \renewcommand{\headrule}{\hbox to\headwidth{\color{cpgreen}\leaders\hrule height \headrulewidth\hfill}}
 }
@@ -47,18 +55,19 @@
 
 \setlist[itemize]{noitemsep, topsep=0pt, rightmargin=0.2in}
 
-\newcommand{\resumesection}[2]{
+\newcommand{\resumesection}[1]{
   \vspace{1em}
-  \noindent\Large{\textbf{#1}}\hfill\normalsize{#2}
+  \noindent\Large{\textbf{#1}}\hfill\normalsize
 }
 
 \newcommand{\resumelistitem}[1]{
-  \item{\normalsize{#1}}
+  % \item{\normalsize{#1}}
+  \item{\fontsize{11.5}{18}#1}
 }
 
 \newcommand{\resumejobtitle}[5]{
-  \vspace{0.6em}
-  \noindent\large{\textbf{#1, \textit{#2} (#3)}}\hfill\normalsize{#4\textemdash#5}
+  \vspace{0.5em}
+  \noindent\normalsize{\textbf{#1, \textit{#2} (#3)}}\hfill\small{#4\textemdash#5}
 }
 
 \renewcommand{\labelitemi}{\color{cpgreen}\scriptsize\raisebox{0.25em}{$\bullet$}}
@@ -66,24 +75,24 @@
 \begin{document}
   \pagestyle{resumeheader}
 
-  \resumesection{Education}{~}
+  \resumesection{Education}
 
     \indent\textbf{California Polytechnic State University (Cal Poly), San Luis Obispo (SLO)}
 
-    \indent\indent\small{B.S. Computer Science, concentrating in Security}\hfill\normalsize{Graduation: June 2021}
+    \indent\indent B.S. Computer Science, concentrating in Security\hfill Graduation: June 2021
 
-  \resumesection{Work Experience}{~}
+  \resumesection{Work Experience}
 
     \resumejobtitle{Software Development Engineer Intern (Security)}{GoDaddy}{Remote}{June}{September 2020}
 
     \begin{itemize}
       \setlength{\itemsep}{0.15pt}
-      \resumelistitem{Automated processes for on-demand analysis/reporting of CVE exploit exposure of potentially-affected machines within GoDaddy's infrastructure.}
+      \resumelistitem{Automated on-demand analysis/reporting of CVE impacts on potentially-affected infrastructure.}
       \resumelistitem{Utilized Mitre ATT\&CK's STIX implementation to relate
         techniques, tactics, and mitigations with relevant CVE
         exploits and their supporting classifications/weaknesses in Go.}
       \resumelistitem{Created a Go library to retrieve detailed information for
-        CVEs, CPEs, and CAPECs using APIs for NIST and CIRCL.}
+        CVEs, CPEs, and CAPECs from NIST's and CIRCL's APIs.}
       \resumelistitem{Enriched IP and domain-related IOCs using Shodan data for internal team tools.}
     \end{itemize}
 
@@ -91,9 +100,9 @@
 
     \begin{itemize}
       \setlength{\itemsep}{0.15pt}
-      \resumelistitem{Triaged student, faculty, and staff-submitted phishing emails and suspicious user account network activity for blue-team tasks.}
+      \resumelistitem{Triaged student and staff-submitted phishing emails and suspicious user account network activity.}
       \resumelistitem{Achieved proficiency in Splunk by creating alerts, advanced dashboards, and workflows and completed \\ Splunk Fundamentals I.}
-      \resumelistitem{Automated a Python script to parse, enrich, and normalize email files and IOCs to streamline daily analysis processes.}
+      \resumelistitem{Automated daily analysis tasks using Splunk Phantom playbooks and custom developed integrations/apps.}
     \end{itemize}
 
     \resumejobtitle{Threat Research Intern}{BlackBerry Cylance Inc.}{Irvine, CA}{June}{September 2019}
@@ -102,58 +111,94 @@
 
     \begin{itemize}
       \setlength{\itemsep}{0.15pt}
-      \resumelistitem{Developed an advanced automation framework to validate and test team-developed EDR rules against malicious and trusted binaries, and integrated it into the team's Jira workflow.}
-      \resumelistitem{Created an EDR rule validation tool using Python for team usage and to validate consumer submissions.}
-      \resumelistitem{Contributed towards mitigating the MITRE ATT\&CK Framework and secured high-priority company deals with custom EDR rules.}
-      \resumelistitem{Learned advanced static and dynamic malware analysis skills and techniques and Metasploit hacking skills.}
+      \resumelistitem{Developed an advanced automation framework to validate and
+        test team-developed EDR rules against malicious/trusted binaries, using Jira.}
+      \resumelistitem{Created an EDR rule validation Python tool for team use and consumer submission validation.}
+      \resumelistitem{Contributed towards mitigating the MITRE ATT\&CK Framework with custom EDR rules.}
+      \resumelistitem{Learned advanced static/dynamic malware analysis techniques and Metasploit hacking skills.}
       \resumelistitem{Enriched malicious hashes with family classification data using VirusTotal and internal APIs.}
 		\end{itemize}
 
-  \resumesection{Skills}{~}
+  \vspace{1em}
+    \begin{minipage}[t]{0.3\textwidth}
+      \Large{\textbf{Proficient in}}
+      \vspace{0.6em}
 
-    \vspace{0.6em}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l l l}
-        Security Automation & Splunk & Splunk Phantom & Malware Analysis \\
-        Python & C & Go & Regex \\
-        REST APIs & Web Scraping & x86 Reverse Engineering & Metasploit \\
-        pfSense & VLANs & Firewall Administration & Computer Networking \\
-        BASH/ZSH & vim & git & \LaTeX \\
-        Python Flask & VMware & Docker & \texttt{systemd} \\
-    \end{tabular*}
+        \begin{tabular*}{0.25\textwidth}{@{\extracolsep{\fill}} l l}
+          Python & Go \\
+          C & Regex \\
+          REST APIs & Networking \\
+        \end{tabular*}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.3\textwidth}
+      \Large{\textbf{Familiar with}}
+      \vspace{0.6em}
 
-  \resumesection{Projects}{~}
+        \begin{tabular*}{0.25\textwidth}{@{\extracolsep{\fill}} l}
+          Security Automation \\
+          Malware Analysis \\
+          VLANs \\
+          % Firewall Administration \\
+          Web Scraping \\
+          % x86 Reverse Engineering & \\
+        \end{tabular*}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.3\textwidth}
+      \Large{\textbf{Have used}}
+      \vspace{0.6em}
 
-    White Hat Malware Lab
+        \begin{tabular*}{0.25\textwidth}{@{\extracolsep{\fill}} l l}
+          Splunk & Splunk Phantom \\
+          Metasploit & Wireshark \\
+          pfSense & Ubiquiti \\
+          VMware ESXi & Docker \\
+          Python Flask & \LaTeX \\
+          % BASH/ZSH & \\
+          % git & vim \\
+        \end{tabular*}
+    \end{minipage}
+    \hfill
+  \vspace{-0.5em}
+
+  % \resumesection{White Hat Malware Lab}
+
+    % \begin{itemize}
+      % \setlength{\itemsep}{0.15pt}
+      % \resumelistitem{Personally-developed lab environment for teaching static/dynamic malware analysis techniques to club members.}
+      % \resumelistitem{Allows for club research on malware attacks,
+        % antivirus bypasses, reverse-engineering training, and \\ Kali Linux/Metasploit ethical penetration-testing teaching and practice.}
+      % \resumelistitem{Powered by VMware ESXI, Python Flask, pfSense, and CrowdStrike Hybrid Analysis.}
+    % \end{itemize}
+
+  \resumesection{White Hat Cybersecurity Club}
 
     \begin{itemize}
       \setlength{\itemsep}{0.15pt}
-      \resumelistitem{Personally-developed lab environment for teaching static/dynamic malware analysis techniques to club members.}
-      \resumelistitem{Allows for club research on malware attacks,
-        antivirus bypasses, reverse-engineering training, and \\ Kali Linux/Metasploit ethical penetration-testing teaching and practice.}
-      \resumelistitem{Powered by VMware ESXI, Python Flask, pfSense, and CrowdStrike Hybrid Analysis.}
+      \resumelistitem{Malware Tech Team Lead
+        % – Project founder and leader of a 20+ member team.
+      } \hfill Fall 2019\textemdash Present
+      \resumelistitem{SysAdmin
+        % – Administrator of lab server, networking, and custom CTF infrastructure.
+      } \hfill Spring 2019\textemdash Present
+      \resumelistitem{Webmaster
+        % – Developer/Maintainer of club website (https://thewhitehat.club).
+      } \hfill Spring 2018\textemdash Spring 2019
+      \resumelistitem{Gave technical talks on Virtualization Security, Malware Analysis, \\
+        Web Server Security, Security Question Security, Intro to Networks and the Internet, \\
+        DNS and DNS Security, All About VLANs.}
     \end{itemize}
 
-  \resumesection{White Hat Cybersecurity Club (SLO)}{}
-
-    \begin{itemize}
-      \setlength{\itemsep}{0.15pt}
-      \resumelistitem{Malware Tech Team Lead – Project founder and leader of a
-        20+ member team.} \hfill Fall 2019\textemdash Present
-      \resumelistitem{SysAdmin – Administrator of lab server, networking, and
-        custom CTF infrastructure.} \hfill Spring 2019\textemdash Present
-      \resumelistitem{Webmaster – Developer/Maintainer of club website
-        (https://thewhitehat.club).} \hfill Spring 2018\textemdash Spring 2019
-      \resumelistitem{Gave technical talks on Virtualization Security, Malware
-        Analysis, \\ Web Server Security, Security Question Security, Intro to Networks and the Internet, DNS and DNS Security.}
-    \end{itemize}
-
-  \resumesection{Relevant Coursework}{~}
+  \resumesection{Relevant Coursework}
 
     \vspace{0.6em}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l l}
-      Computer Security & Wireless Security & Programming Languages \\
+    \centering
+    \begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill}} l l l}
+      Computer Security & Wireless Security & Binary Exploitation \\
       Computer Networks & Systems Programming & Computer Architecture \\
-      Operating Systems & Intro to Computing with Security & Technical Writing \\
+      Operating Systems & Programming Languages & Cryptography \\
+      & Technical Writing & \\
     \end{tabular*}
 
 \end{document}
