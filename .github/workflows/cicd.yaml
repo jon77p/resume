@@ -19,6 +19,8 @@ on:
 jobs:
   build:
     runs-on: ["self-hosted", "resume-runner"]
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
@@ -45,8 +47,6 @@ jobs:
       - name: Create release
         if: github.input.release == 'true'
         id: release
-        permissions:
-          contents: write
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ steps.version.outputs.version }}
