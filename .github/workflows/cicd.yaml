@@ -1,0 +1,54 @@
+---
+name: CI/CD
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      release:
+        description: 'Create a release'
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  build:
+    runs-on: ["self-hosted", "resume-runner"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Compile LaTeX
+        id: compile
+        uses: xu-cheng/latex-action@v3
+        with:
+          pre_compile: "tlmgr update --self && tlmgr install `cat requirements.tlmgr.txt`"
+          root_file: Jonathan_Prentice.Resume.tex
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume
+          path: Jonathan_Prentice.Resume.pdf
+
+      - name: Read version number
+        if: github.input.release == 'true'
+        id: version
+        run: echo "::set-output name=version::$(cat version.txt)"
+
+      - name: Create release
+        if: github.input.release == 'true'
+        id: release
+        permissions:
+          contents: write
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          files: |
+            Jonathan_Prentice.Resume.pdf
