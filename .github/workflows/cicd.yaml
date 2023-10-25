@@ -5,9 +5,19 @@ on:
   pull_request:
     branches:
       - main
+    files:
+      - '**.tex'
+      - 'Makefile'
+      - 'requirements.tlmgr.txt'
+      - 'version.txt'
   push:
     branches:
       - main
+    files:
+      - '**.tex'
+      - 'Makefile'
+      - 'requirements.tlmgr.txt'
+      - 'version.txt'
   workflow_dispatch:
     inputs:
       release:
