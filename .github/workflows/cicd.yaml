@@ -5,7 +5,7 @@ on:
   pull_request:
     branches:
       - main
-    files:
+    paths:
       - '**.tex'
       - 'Makefile'
       - 'requirements.tlmgr.txt'
@@ -13,7 +13,7 @@ on:
   push:
     branches:
       - main
-    files:
+    paths:
       - '**.tex'
       - 'Makefile'
       - 'requirements.tlmgr.txt'
@@ -29,9 +29,6 @@ on:
 jobs:
   build:
     runs-on: ["self-hosted", "resume-runner"]
-    permissions:
-      contents: write
-
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -49,13 +46,26 @@ jobs:
           name: resume
           path: Jonathan_Prentice.Resume.pdf
 
+  release:
+    if: github.event.inputs.release == 'true'
+    runs-on: ["self-hosted", "resume-runner"]
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Download PDF
+        uses: actions/download-artifact@v3
+        with:
+          name: resume
+          path: Jonathan_Prentice.Resume.pdf
+
       - name: Read version number
-        if: github.input.release == 'true'
         id: version
         run: echo "::set-output name=version::$(cat version.txt)"
 
       - name: Create release
-        if: github.input.release == 'true'
         id: release
         uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v1
         with:
