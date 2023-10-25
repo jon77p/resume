@@ -34,17 +34,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
 
       - name: Compile LaTeX
         id: compile
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@f1ca82cbed861b3534e2997dd584944f55b884ed # v3
         with:
           pre_compile: "tlmgr update --self && tlmgr install `cat requirements.tlmgr.txt`"
           root_file: Jonathan_Prentice.Resume.tex
 
       - name: Upload PDF
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3
         with:
           name: resume
           path: Jonathan_Prentice.Resume.pdf
@@ -57,7 +57,7 @@ jobs:
       - name: Create release
         if: github.input.release == 'true'
         id: release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v1
         with:
           tag_name: v${{ steps.version.outputs.version }}
           files: |
