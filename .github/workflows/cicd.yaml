@@ -57,14 +57,17 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download PDF
+        id: download
         uses: actions/download-artifact@v3
         with:
           name: resume
-          path: Jonathan_Prentice.Resume.pdf
 
       - name: Read version number
         id: version
         run: echo "::set-output name=version::$(cat version.txt)"
+
+      - name: Move PDF
+        run: mv ${{ steps.download.outputs.download-path }}/Jonathan_Prentice.Resume.pdf .
 
       - name: Create release
         id: release
