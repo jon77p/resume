@@ -48,6 +48,7 @@ jobs:
 
   release:
     if: github.event.inputs.release == 'true'
+    needs: build
     runs-on: ["self-hosted", "resume-runner"]
     permissions:
       contents: write
