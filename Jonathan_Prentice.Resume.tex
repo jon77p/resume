@@ -25,6 +25,19 @@
 \renewcommand\huge{\fontsize{20}{18}}
 \makeatother
 
+% SIZE CONSTANTS
+\newcommand{\sepspacing}{1em}
+% should be 1/2 of \sepspacing in em, calculated
+\newcommand{\halfsepspacing}{0.5em}
+\newcommand{\neghalfspacing}{-0.5em}
+\newcommand{\itemspacing}{0.15pt}
+\setlength{\columnsep}{10pt}
+
+% VARIABLES
+\newcommand{\username}{jon77p}
+\newcommand{\phonenumber}{(949) 438~\textemdash~8855}
+\newcommand{\email}{\username@gmail.com}
+
 \fancypagestyle{resumeheader}{%
   \fancyhf{}%
   \fancyhead[EOL]{%
@@ -38,8 +51,8 @@
     {%
     \begin{minipage}[r][40pt][c]{0.475\textwidth}
       \begin{tabular}{l ? l}
-        \color{cpgreen}{\raisebox{-0.1em}{\faPhone}} (949) 438~\textemdash~8855 & \color{cpgreen}{\faEnvelope} japrenti@calpoly.edu \\
-        \color{cpgreen}{\raisebox{-0.1em}{\faGithub}} github.com/jon77p & \color{cpgreen}{\faLinkedinSquare} linkedin.com/in/jon77p \\
+        \color{cpgreen}{\raisebox{-0.1em}{\faPhone}} \phonenumber & \color{cpgreen}{\faEnvelope} \email \\
+        \color{cpgreen}{\raisebox{-0.1em}{\faGithub}} github.com/\username & \color{cpgreen}{\faLinkedinSquare} linkedin.com/in/\username \\
       \end{tabular}
     \end{minipage}
     }
@@ -51,12 +64,14 @@
   \renewcommand{\headrule}{\hbox to\headwidth{\color{cpgreen}\leaders\hrule height \headrulewidth\hfill}}
 }
 
-\setlength{\columnsep}{10pt}
-
 \setlist[itemize]{noitemsep, topsep=0pt, rightmargin=0.2in}
 
+\newcommand{\sep}{
+  \vspace{\sepspacing}
+}
+
 \newcommand{\resumesection}[1]{
-  \vspace{1em}
+  \sep
   \noindent\Large{\textbf{#1}}\hfill\normalsize
 }
 
@@ -66,8 +81,32 @@
 }
 
 \newcommand{\resumejobtitle}[5]{
-  \vspace{0.5em}
+  \vspace{\halfsepspacing}
   \noindent\normalsize{\textbf{#1, \textit{#2} (#3)}}\hfill\small{#4\textemdash#5}
+}
+
+\newcommand{\resumejobsubtitle}[3]{
+  \noindent\small\textit{#1}\hfill\small{#2\textemdash #3}
+}
+
+\newcommand{\education}{
+  \resumesection{Education}
+
+    \indent\textbf{California Polytechnic State University (Cal Poly), San Luis Obispo (SLO)}
+
+    \indent\indent B.S. Computer Science, concentrating in Security\hfill Graduated: June 2021
+}
+
+\newcommand{\skillssection}[2]{
+  \begin{minipage}[t]{0.3\textwidth}
+    \Large{\textbf{#1}}
+    \vspace{\halfsepspacing}
+
+      \begin{tabular*}{0.25\textwidth}{@{\extracolsep{\fill}} l l}
+        #2
+      \end{tabular*}
+  \end{minipage}
+  \hfill
 }
 
 \renewcommand{\labelitemi}{\color{cpgreen}\scriptsize\raisebox{0.25em}{$\bullet$}}
@@ -75,18 +114,36 @@
 \begin{document}
   \pagestyle{resumeheader}
 
-  \resumesection{Education}
-
-    \indent\textbf{California Polytechnic State University (Cal Poly), San Luis Obispo (SLO)}
-
-    \indent\indent B.S. Computer Science, concentrating in Security\hfill Graduation: June 2021
+  \education
 
   \resumesection{Work Experience}
+
+    \resumejobtitle{Security Engineer, Product Security}{GoDaddy}{Remote, WA}{August 2021}{October 2023}
+
+    \begin{itemize}
+      \setlength{\itemsep}{\itemspacing}
+      \resumelistitem{Planned and started developing a custom Static Application Security Testing (SAST)
+        scanner application in Go to automate scanning of internal repositories,
+        using open-source and proprietary scanning solutions.}
+      \resumelistitem{Created dashboards and reports in Splunk to demonstrate code scanning and secrets detection
+        coverage to leadership on a continual basis.}
+      \resumelistitem{Implemented custom SARIF normalization and post-processing logic in Go
+        to standardize SAST results and enrich developer and security analyst experiences.}
+      \resumelistitem{Collaborated with team on threat modeling and code reviews of internal company projects/codebases.}
+      \resumelistitem{Led bi-quarterly security training sessions for developers and engineers company-wide.}
+      \resumelistitem{Developed AWS CDK and Kubernetes infrastructure for OWASP Juice Shop lab workshops during security training,
+        all deployed with easy one-click options.}
+      \resumelistitem{Led the transfer of all Security Logging SIEM infrastructure to another internal team,
+        including operational training and code refresh efforts.}
+      \resumelistitem{Implemented a standardized application security logging library in Go for team use.}
+      \resumelistitem{Automated the management of SIEM reports, dashboards, and other resources as infrastructure as code for version tracking.}
+      \resumelistitem{Became the team SME in Elastic while used as a SIEM.}
+    \end{itemize}
 
     \resumejobtitle{Software Development Engineer Intern (Security)}{GoDaddy}{Remote}{June}{September 2020}
 
     \begin{itemize}
-      \setlength{\itemsep}{0.15pt}
+      \setlength{\itemsep}{\itemspacing}
       \resumelistitem{Automated on-demand analysis/reporting of CVE impacts on potentially-affected infrastructure.}
       \resumelistitem{Utilized Mitre ATT\&CK's STIX implementation to relate
         techniques, tactics, and mitigations with relevant CVE
@@ -100,49 +157,36 @@
 
     \resumejobtitle{Threat Research Intern}{BlackBerry Cylance Inc.}{Irvine, CA}{June}{September 2019}
 
-    \noindent\small\textit{Stuart McClure~\textemdash~CEO Executive Circle Summer Internship Program}\hfill\normalsize{June\textemdash September 2018}
+    \resumejobsubtitle{Stuart McClure~\textemdash~CEO Executive Circle Summer Internship Program}{June}{September 2018}
 
-  \vspace{1em}
-    \begin{minipage}[t]{0.3\textwidth}
-      \Large{\textbf{Proficient in}}
-      \vspace{0.6em}
+  \sep
+  \skillssection{Proficient in}{
+    Go & Python \\
+    Typescript & Regex \\
+    SAST & AWS \\
+    Kubernetes & Networking \\
+    Security Automation & \\
+  }
+  \skillssection{Familiar with}{
+    Splunk & SARIF \\
+    Threat Modeling & Code Reviews \\
+    Web Scraping & Elastic \\
+    Bash/ZSH & \\
+  }
+  \skillssection{Have used}{
+    OWASP Framework & AWS CDK \\
+    Wireshark & Splunk SOAR \\
+    Ubiquiti & Python Flask \\
+    Docker & Devcontainers \\
+    git & \LaTeX \\
+  }
 
-        \begin{tabular*}{0.25\textwidth}{@{\extracolsep{\fill}} l l}
-          Python & Go \\
-          C & Regex \\
-          REST APIs & Networking \\
-        \end{tabular*}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.3\textwidth}
-      \Large{\textbf{Familiar with}}
-      \vspace{0.6em}
+  \resumesection{Conferences Attended}
+  \begin{itemize}
+    \setlength{\itemsep}{\itemspacing}
+    \resumelistitem{BSides Seattle 2023}
+  \end{itemize}
 
-        \begin{tabular*}{0.25\textwidth}{@{\extracolsep{\fill}} l}
-          Security Automation \\
-          Malware Analysis \\
-          VLANs \\
-          % Firewall Administration \\
-          Web Scraping \\
-          % x86 Reverse Engineering & \\
-        \end{tabular*}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.3\textwidth}
-      \Large{\textbf{Have used}}
-      \vspace{0.6em}
-
-        \begin{tabular*}{0.25\textwidth}{@{\extracolsep{\fill}} l l}
-          Splunk & Splunk Phantom \\
-          Metasploit & Wireshark \\
-          pfSense & Ubiquiti \\
-          VMware ESXi & Docker \\
-          Python Flask & \LaTeX \\
-          % BASH/ZSH & \\
-          % git & vim \\
-        \end{tabular*}
-    \end{minipage}
-    \hfill
-  \vspace{-0.5em}
+  \vspace{\neghalfspacing}
 
 \end{document}
