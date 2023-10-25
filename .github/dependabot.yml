@@ -1,0 +1,8 @@
+---
+version: 2
+updates:
+  - package-ecosystem: "github-actions" # See documentation for possible values
+    # Default directory is .github/workflows
+    directory: "/" # Location of package manifests within .github/workflows
+    schedule:
+      interval: "weekly"
