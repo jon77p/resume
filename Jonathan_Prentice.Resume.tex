@@ -20,17 +20,17 @@
 \usepackage{anyfontsize}
 
 \makeatletter
-\renewcommand\large{\fontsize{13.5}{18}}
-\renewcommand\Large{\fontsize{15.5}{18}}
+\renewcommand\large{\fontsize{14.5}{18}}
+\renewcommand\Large{\fontsize{16.5}{18}}
 \renewcommand\huge{\fontsize{20}{18}}
 \makeatother
 
 % SIZE CONSTANTS
-\newcommand{\sepspacing}{1em}
+\newcommand{\sepspacing}{1.25em}
 % should be 1/2 of \sepspacing in em, calculated
-\newcommand{\halfsepspacing}{0.5em}
-\newcommand{\neghalfspacing}{-0.5em}
-\newcommand{\itemspacing}{0.15pt}
+\newcommand{\halfsepspacing}{1em}
+\newcommand{\neghalfspacing}{-0.625em}
+\newcommand{\itemspacing}{1pt}
 \setlength{\columnsep}{10pt}
 
 % VARIABLES
@@ -82,11 +82,11 @@
 
 \newcommand{\resumejobtitle}[5]{
   \vspace{\halfsepspacing}
-  \noindent\normalsize{\textbf{#1, \textit{#2} (#3)}}\hfill\small{#4\textemdash#5}
+  \noindent\normalsize{\textbf{#1, \textit{#2} (#3)}}\hfill\small{#4~\textemdash~#5}
 }
 
 \newcommand{\resumejobsubtitle}[3]{
-  \noindent\small\textit{#1}\hfill\small{#2\textemdash #3}
+  \noindent\small\textit{#1}\hfill\small{#2~\textemdash~#3}
 }
 
 \newcommand{\education}{
@@ -98,7 +98,7 @@
 }
 
 \newcommand{\skillssection}[2]{
-  \begin{minipage}[t]{0.3\textwidth}
+  \noindent\begin{minipage}[t]{0.3\textwidth}
     \Large{\textbf{#1}}
     \vspace{\halfsepspacing}
 
@@ -140,7 +140,7 @@
       \resumelistitem{Became the team SME in Elastic while used as a SIEM.}
     \end{itemize}
 
-    \resumejobtitle{Software Development Engineer Intern (Security)}{GoDaddy}{Remote}{June}{September 2020}
+    \resumejobtitle{SDE Internship, Threat Research}{GoDaddy}{Remote}{June}{September 2020}
 
     \begin{itemize}
       \setlength{\itemsep}{\itemspacing}
@@ -160,20 +160,20 @@
     \resumejobsubtitle{Stuart McClure~\textemdash~CEO Executive Circle Summer Internship Program}{June}{September 2018}
 
   \sep
-  \skillssection{Proficient in}{
+  \skillssection{Proficient in:}{
     Go & Python \\
     Typescript & Regex \\
     SAST & AWS \\
     Kubernetes & Networking \\
     Security Automation & \\
   }
-  \skillssection{Familiar with}{
+  \skillssection{Familiar with:}{
     Splunk & SARIF \\
     Threat Modeling & Code Reviews \\
     Web Scraping & Elastic \\
     Bash/ZSH & \\
   }
-  \skillssection{Have used}{
+  \skillssection{Have used:}{
     OWASP Framework & AWS CDK \\
     Wireshark & Splunk SOAR \\
     Ubiquiti & Python Flask \\
