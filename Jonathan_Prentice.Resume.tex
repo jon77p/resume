@@ -35,7 +35,7 @@
 
 % VARIABLES
 \newcommand{\username}{jon77p}
-\newcommand{\phonenumber}{(949) 438~\textemdash~8855}
+\newcommand{\phonenumber}{(949) 438~\textendash~8855}
 \newcommand{\email}{\username@gmail.com}
 
 \fancypagestyle{resumeheader}{%
@@ -114,28 +114,27 @@
 \begin{document}
   \pagestyle{resumeheader}
 
-  \education
-
-  \resumesection{Work Experience}
+  \resumesection{Professional Experience}
 
     \resumejobtitle{Security Engineer, Product Security}{GoDaddy}{Remote, WA}{August 2021}{October 2023}
 
     \begin{itemize}
       \setlength{\itemsep}{\itemspacing}
-      \resumelistitem{Planned and started developing a custom Static Application Security Testing (SAST)
-        scanner application in Go to automate scanning of internal repositories,
+      \resumelistitem{Planned and began development on a custom Static Application Security Testing (SAST)
+        application in Go to automate scanning of internal repositories,
         using open-source and proprietary scanning solutions.}
-      \resumelistitem{Created dashboards and reports in Splunk to demonstrate code scanning and secrets detection
+      \resumelistitem{Built dashboards and reports in Splunk to demonstrate code scanning and secrets detection
         coverage to leadership on a continual basis.}
       \resumelistitem{Implemented custom SARIF normalization and post-processing logic in Go
         to standardize SAST results and enrich developer and security analyst experiences.}
       \resumelistitem{Collaborated with team on threat modeling and code reviews of internal company projects/codebases.}
-      \resumelistitem{Led bi-quarterly security training sessions for developers and engineers company-wide.}
+      \resumelistitem{Led bi-quarterly security training sessions for developers and engineers company-wide to train and teach
+        the "Shift Left" mentality for security in the software development lifecycle (SDL).}
       \resumelistitem{Developed AWS CDK and Kubernetes infrastructure for OWASP Juice Shop lab workshops during security training,
         all deployed with easy one-click options.}
-      \resumelistitem{Led the transfer of all Security Logging SIEM infrastructure to another internal team,
-        including operational training and code refresh efforts.}
-      \resumelistitem{Implemented a standardized application security logging library in Go for team use.}
+      \resumelistitem{Migrated all SIEM infrastructure to another internal team,
+        including code refresh efforts and operational training for managing the 10 TB/day log volume.}
+      \resumelistitem{Implemented a standardized application security logging library in Go.}
       \resumelistitem{Automated the management of SIEM reports, dashboards, and other resources as infrastructure as code for version tracking.}
       \resumelistitem{Became the team SME in Elastic while used as a SIEM.}
     \end{itemize}
@@ -186,6 +185,8 @@
     \setlength{\itemsep}{\itemspacing}
     \resumelistitem{BSides Seattle 2023}
   \end{itemize}
+
+  \education
 
   \vspace{\neghalfspacing}
 
