@@ -28,7 +28,8 @@ on:
 
 jobs:
   build:
-    runs-on: ["self-hosted", "resume-runner"]
+    # runs-on: ["self-hosted", "resume-runner"]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -49,7 +50,8 @@ jobs:
   release:
     if: github.event.inputs.release == 'true'
     needs: build
-    runs-on: ["self-hosted", "resume-runner"]
+    # runs-on: ["self-hosted", "resume-runner"]
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
