@@ -60,7 +60,7 @@ jobs:
 
       - name: Download PDF
         id: download
-        uses: actions/download-artifact@b14cf4c92620c250e1c074ab0a5800e37df86765 # v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: resume
 
