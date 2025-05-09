@@ -3,7 +3,7 @@
 {
 	"name": "Alpine",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.18@sha256:f4639ce61ef276d5f4d3b63f7acc1c2dfb6b3ab87019e1a625e25b1f5caa3a7c",
+	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.18@sha256:af43c2cab304d20a35fbd138b8698927c2a099a378aef1a479bd987473357bcf",
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2@sha256:3cf7ca93154faf9bdb128f3009cf1d1a91750ec97cc52082cf5d4edef5451f85": {
 			"installZsh": true,
