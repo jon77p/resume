@@ -5,7 +5,7 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.18@sha256:346583a31789573289604e9b51d46683b8b8c673dd7f3db382a50674f9d3dd93",
 	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2@sha256:3cf7ca93154faf9bdb128f3009cf1d1a91750ec97cc52082cf5d4edef5451f85": {
+		"ghcr.io/devcontainers/features/common-utils:2@sha256:00fd45550f578d9d515044d9e2226e908dbc3d7aa6fcb9dee4d8bdb60be114cf": {
 			"installZsh": true,
 			"configureZshAsDefaultShell": true,
 			"installOhMyZsh": true,
